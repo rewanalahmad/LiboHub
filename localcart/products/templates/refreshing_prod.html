@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    {%if love%}
+        <ul>
+            {%for prod in love%}<li>
+                <h2>{{prod.name}}</h2>
+                <a href="{% url 'Products:product_details' prod.id %}">{{ prod}}</a>
+                Description:
+                <pre>{{prod.description}}</pre>
+
+
+            </li> {%endfor%}
+        </ul>
+    {%else%}
+        <p>no categoray found</p>
+    {%endif%}
+{% endblock %}

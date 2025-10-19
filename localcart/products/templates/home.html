@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+        <h3>products <i>{{categoray}}</i></h3>
+        <ul>
+            <a href="{% url 'Products:add_product_with_genre' categoray_id=categoray.id %}"> add new categoray</a>
+        </ul>
+{% endblock %}

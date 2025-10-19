@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<h3>Add new Product {% if categoray%} to {{categoray.name}}{%enfif%}</h3>
+<div>
+    <form method="post" enctype="multipart/form-data">  <!-- Include enctype for file uploads -->
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Product</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    {%if product%}
+        <article>
+            <h2>{{product.name}}</h2>
+            description:<p>{{product.description}}</p>
+            price:<p>{{product.price}}</p>
+            stock:<p>{{product.stock}}</p>
+
+        </article>
+        <ul>
+            {%for c in cat%}<li>{{c}}</li> {%endfor%}
+        </ul>
+    {%else%}
+        <p>no categoray found</p>
+    {%endif%}
+{% endblock %}

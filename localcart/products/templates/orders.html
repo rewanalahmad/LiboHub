@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+    <h3></h3>
+    <div>
+        {%for o in order%}
+            <div>
+                <h1> the user {{o.user}}</h1>
+            </div>
+        {%endfor%}
+    </div>
+{% endblock %}

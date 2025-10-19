@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    {%if product or categoray%}
+
+        <ul>
+            {%for p in product%}
+            <li>
+                <a href="{% url 'Products:product' p.id %}">{{ p }}</a>
+            </li> {%endfor%}
+        </ul>
+    {%endif%}
+{% endblock %}
