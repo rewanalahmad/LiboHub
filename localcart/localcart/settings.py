@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-lr7t4_*baq77gq%hz%12im#nxw)zc7)9h81jw%-d3*+ht0p-i$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -42,6 +43,8 @@ INSTALLED_APPS = [
     'orders',
     'payments',
     'products',
+    'home',
+    'django_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -59,7 +62,7 @@ ROOT_URLCONF = 'localcart.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR /'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -119,9 +122,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+
+STATIC_URL = '/static/'
+
+
+STATIC_ROOT = os.path.join(BASE_DIR, "/static/")
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "templates/staticfiles")]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#MySettings
+LOGIN_REDIRECT_URL="Products:index"
+LOGOUT_REDIRECT_URL="Products:index"
+LOGIN_URL="accounts:login"

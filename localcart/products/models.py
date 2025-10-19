@@ -1,9 +1,12 @@
 from django.db import models
 from django.urls import reverse
 
-class Catrgory(models.Model):
-    name = models.CharField(max_length=150, default="name")
+class Category(models.Model):
+    name = models.CharField(max_length=150, default="product_name")
     slug = models.SlugField(unique=True, null=True, blank=True)
+
+    class Meta:
+        ordering=['-name']
 
     def __str__(self):
         return self.name
@@ -11,7 +14,7 @@ class Catrgory(models.Model):
 
 class Product(models.Model):
     categoray = models.ForeignKey(
-        Catrgory,
+        Category,
         related_name='products',   # no spaces in related_name
         on_delete=models.CASCADE,
         null=True,
@@ -38,3 +41,9 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+class FeedBack(models.Model):
+    name=models.CharField(max_length=50)
+    email=models.EmailField()
+    feedbak=models.CharField()
+    satisfaction=models.CharField(max_length=50)

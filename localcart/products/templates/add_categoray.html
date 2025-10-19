@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block content %}
+    <h3> Add Categoray </h3>
+    <div>
+        <form method="post">
+            {%csrf_token%}
+            {{form.as_p}}
+            <button type="submit"> save categoray </button>
+        </form>
+
+    </div>
+
+{% endblock %}
