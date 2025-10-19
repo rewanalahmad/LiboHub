@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'payments',
     'products',
     'home',
+    'comment',
     'django_bootstrap5',
 ]
 

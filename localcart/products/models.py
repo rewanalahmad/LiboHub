@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
+
 
 class Category(models.Model):
     name = models.CharField(max_length=150, default="product_name")
@@ -13,6 +15,7 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    user=models.ForeignKey(User, on_delete=models.CASCADE,null=True,blank=True)
     categoray = models.ForeignKey(
         Category,
         related_name='products',   # no spaces in related_name
@@ -35,6 +38,7 @@ class Product(models.Model):
     )
     imag = models.ImageField(upload_to='products/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now=True)
+    
 
     def get_absolute_url(self):
         return reverse('product_detail', args=[self.slug])
