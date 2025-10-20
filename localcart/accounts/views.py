@@ -17,4 +17,4 @@ def register(request):
             login(request,new_user)
             return HttpResponse("Done")
     context={'form':form}
-    return render(request, 'register.html', {'form': form})
+    return render(request,'registration/register.html', {'form': form})
