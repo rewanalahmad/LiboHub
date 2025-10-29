@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: localcart
+    env: python
+    buildCommand: 'pip install -r requirements.txt'
+    startCommand: 'gunicorn localcart.wsgi'
