@@ -1,5 +1,31 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
 {% block content %}
     <div>
-            <h1>{{product.name}}</h1>
+            <h5>{{product.name}}</h5>
+            <h5>{{product.id}}</h5>
+            <h5>{{product.categoray}}</h5>
+            <h4>{{product.price}}</h4>
+            <div> 
+            {% if product.imag %}
+                <img src="{{ product.imag.url }}" style="width: 100px; height: 100px;">
+            {% else %}
+                <p>No image available</p>
+            {% endif %}
+            </div>
+            <div class="card-text">
+                <form action="{% url 'Products:toggle_favorite' id=product.id%}" method="post">
+                    {% csrf_token%}
+                    {%if product in user.favorit_book.all %}
+                        <button type="submit"> Remove form favorite</button>
+                    {%else%}
+                        <button type="submit"> add to favorite</button>
+                    {%endif%} 
+
+                </form>
+                <a href="{% url 'Products:delete' product.id%}"> Delete Book</a>
+                <a href="{% url 'Products:edit' product.id%}"> edit Book</a>
+
+            </div> 
     </div>
 {% endblock %}

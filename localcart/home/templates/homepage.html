@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{%load static%}
+{% block content %}
+    {%if messages %}
+        <div class="messages">
+            {% for m in messages%}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        {{m}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            {%endfor%}
+
+        </div>
+    {%endif%}
+<div class="card-group">
+  <div class="card" style="width: 30rem;">
+  <img src="{% static 'mystatic/romanccard.jpg' %}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Romanc</h5>
+    <p class="card-text"></p>
+    <a href="{% url 'Products:categoray_name' 'Romance' %}" class="btn btn-primary">Go to romantic books</a>
+    
+  </div>
+</div>
+  <div class="card" style="width: 30px;">
+  <img src="{% static 'mystatic/nonfction.jpg' %}" class="card-img-top" style="height: 200px; ;">
+  <div class="card-body">
+    <h5 class="card-title">Non-Fiction</h5>
+    <p class="card-text"></p>
+    <a href="{% url 'Products:categoray_name' 'Non-Fiction' %}" class="btn btn-primary">Go to Non-Fiction books</a>
+  </div>
+</div>
+    <div class="card" style="width: 18rem;">
+  <img src="{% static 'mystatic/fiction.jpg' %}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Fiction</h5>
+    <p class="card-text"></p>
+    <a href="{% url 'Products:categoray_name' 'Fiction' %}"  class="btn btn-primary">Go to Fiction books</a>
+  </div>
+</div>
+    <div class="card" style="width: 18rem;">
+  <img src="{% static 'mystatic/mystery.jpg' %}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Mystery</h5>
+    <p class="card-text"></p>
+    <a href="{% url 'Products:categoray_name' 'Mystery' %}" class="btn btn-primary">Go to Mystery books</a>
+  </div>
+</div>
+    <div class="card" style="width: 18rem;">
+  <img src="{% static 'mystatic/clasic.jpg' %}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">Classics</h5>
+    <p class="card-text"></p>
+    <a href="{% url 'Products:categoray_name' 'Classics' %}" class="btn btn-primary">Go to Classics books</a>
+  </div>
+</div>
+</div>
+{% endblock %}
