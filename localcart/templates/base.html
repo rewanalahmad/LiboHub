@@ -4,11 +4,40 @@
     <meta charset="UTF-8">
     <title>LIBOHUB</title>
     {% load django_bootstrap5 %}
+    {% load static%}
     {% bootstrap_css%}
     {% bootstrap_javascript%}
+    <link href="{% static 'your-path-to-fontawesome/css/fontawesome.css' %}" rel="stylesheet">
+    <link href="{% static 'your-path-to-fontawesome/css/brands.css' %}" rel="stylesheet">
+
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+        {% if user.is_authenticated %}
+            <li class="nav-text me-2 d-flex align-item-center">
+              {% if user.profile.photo%}
+                <img src="{{user.profile.photo.url}}", alt="profile",
+                style="width: 20px; height:20px;
+                 border-radius:50%;
+                 margin-right: 5px;">
+              {%endif%}
+            <span class="nav-text me-2">welcom <a href="{% url 'accounts:edit_user_profile'%}">  {{user.username}}</a>  </span>
+            {% if user.is_authenticated%}
+            <form method="post" action="{% url 'accounts:logout' %}">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+            </form>
+
+            {%endif%}
+            
+            </li>
+        {% else %}
+            <p>You are not logged in</p>
+            <a href="{% url 'accounts:login' %}">Login</a>
+        {% endif %}
+    </div>
+    
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">LIBOHUB</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,10 +46,16 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="{%url 'home:homepage'%}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="{% url 'accounts:register'%}"> Register </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'home:about_us'%}"> About Us </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href=""> Contect Us </a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -30,31 +65,20 @@
             <li><a class="dropdown-item" href="{% url 'Products:add_category'%}">Add Categoray</a></li>
             <li><a class="dropdown-item" href="{% url 'Products:add_product'%}">Add Products</a></li>
             <li><a class="dropdown-item" href="{%url 'Products:add_feedback'%}">Add Feedbck</a> </li>
+            <li><a class="dropdown-item" href="{%url 'Products:favorite_book'%}">My Books</a> </li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+      <form class="d-flex" role="search" action="{% url 'Products:search' %}" method="get">
+        {{ search_form.query }}
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
+
     </div>
   </div>
 </nav>
-    <div class="container">
-        {% if user.is_authenticated %}
-            <p>Hi {{ user.username }}!</p>
-            <a href="{% url 'accounts:logout' %}">Logout</a>
-        {% else %}
-            <p>You are not logged in</p>
-            <a href="{% url 'accounts:login' %}">Login</a>
-        {% endif %}
-    </div>
-
     <hr>
 
     {% block content %}

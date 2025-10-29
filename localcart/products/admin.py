@@ -8,8 +8,10 @@ class categoryadmin(admin.ModelAdmin):
 class productadmin(admin.ModelAdmin):
     list_display=['categoray','name','slug','description','price','stock',
                   'imag','created_at']
-    
+class feednackadmin(admin.ModelAdmin):
+    list_display=['name','email','feedback','satisfaction']
+
+
 admin.site.register(Category,categoryadmin)
 admin.site.register(Product,productadmin)
-#feedback
-admin.site.register(FeedBack)
+admin.site.register(FeedBack,feednackadmin)

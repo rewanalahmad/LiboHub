@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Product,Category
 from django.db.models import Avg,Count,Sum,Q
 from django.template import loader
+from django.views.generic import ListView,DetailView,View
 
 #go to Queryset API for more featuers
 

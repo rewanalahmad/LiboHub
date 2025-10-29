@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block content %}
+    <div>
+            <h1>{{product.name}}</h1>
+    </div>
+    <div class="mt-4">
+        <h5> comments </h5>
+        {% for c in comment %}
+            <div class="d-flex align-items-center mb-2">
+                <div>
+                    {% if user.profile.photo%}
+                    <img src="{{user.profile.photo.url}}", alt="profile",
+                    style="width: 20px; height:20px;
+                     border-radius:50%;
+                     margin-right: 5px;">
+                    {%endif%}
+                    <strong> {{c.user.username}}</strong>
+                    <br>
+                     {{c.text}}
+                     <br>
+                    commented on {{c.date_add }} 
+                </div>
+            </div>
+        {%empty%}
+        <p> No Comments yet</p>
+        {%endfor%}
+    </div>
+
+    <! -- comment form -->
+    <div>
+    {% if user.is_authenticated%}
+        <h5>Leaav a comment</h5>
+        <form method="post">
+            {%csrf_token%}
+            {% bootstrap_form comment_form %}
+            <div class="mt_3">
+            {% bootstrap_button button_type='submit' content='Post' %}
+            </div>
+        </form>
+    </div>
+    {%else%}
+        <p><a href="{% url 'accounts:login'%}">login</a> to leav a comment</p>
+    {%endif%}
+
+{% endblock %}

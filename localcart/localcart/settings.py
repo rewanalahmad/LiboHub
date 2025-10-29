@@ -41,15 +41,17 @@ INSTALLED_APPS = [
     'accounts',
     'cart',
     'orders',
-    'payments',
     'products',
     'home',
     'comment',
     'django_bootstrap5',
+    'fontawesomefree',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -68,8 +70,10 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.request',
+                'django.template.context_processors.debug',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'products.context_proseccers.search_form'
             ],
         },
     },
@@ -124,13 +128,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 
-STATIC_URL = '/static/'
+STATIC_URL = 'clearstatic/'
 
 
-STATIC_ROOT = os.path.join(BASE_DIR, "/static/")
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "templates/staticfiles")]
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "media")]
 
+MEDIA_URL="/media/"
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -139,6 +145,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 #MySettings
-LOGIN_REDIRECT_URL="Products:index"
-LOGOUT_REDIRECT_URL="Products:index"
+LOGIN_REDIRECT_URL="home:homepage"
+LOGOUT_REDIRECT_URL="home:homepage"
 LOGIN_URL="accounts:login"
