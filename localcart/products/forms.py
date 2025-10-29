@@ -19,7 +19,7 @@ choices=[
     ('sad','Sad'),
 
 ]
-class FeedbackForm(forms.Form):
+class FeedBackForm(forms.Form):
     name=forms.CharField(max_length=50)
     email=forms.EmailField()
     feedback=forms.CharField()
@@ -30,3 +30,17 @@ class FeedbackForm(forms.Form):
         if '@gmail.com' not in email:
             raise forms.ValidationError('plase use your gmail')
         return email
+    
+
+    
+class SearchForm(forms.Form):
+    query=forms.CharField(
+        required=False,
+        label='',
+        widget=forms.TextInput(attrs={
+        'class': 'form-control me-2',
+        'placeholder': 'Search Books',
+        'type': 'search',
+        'aria-label': 'Search'
+    })
+)

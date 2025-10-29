@@ -15,7 +15,8 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    user=models.ForeignKey(User, on_delete=models.CASCADE,null=True,blank=True)
+    user=models.ForeignKey(User, on_delete=models.CASCADE,null=True,blank=True,
+                                related_name='product')
     categoray = models.ForeignKey(
         Category,
         related_name='products',   # no spaces in related_name
@@ -38,16 +39,19 @@ class Product(models.Model):
     )
     imag = models.ImageField(upload_to='products/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now=True)
+    favorited_by=models.ManyToManyField(User,related_name='favorit_book',blank=True)
     
 
     def get_absolute_url(self):
-        return reverse('product_detail', args=[self.slug])
+        return reverse('Products:comment_on_product', kwargs={'id': self.id})
 
     def __str__(self):
         return self.name
+    def price_with_dollar(self):
+        return self.price+'$'
 
 class FeedBack(models.Model):
     name=models.CharField(max_length=50)
     email=models.EmailField()
-    feedbak=models.CharField()
+    feedback=models.CharField()
     satisfaction=models.CharField(max_length=50)
