@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block content %}
+    <div class="container mt-4">
+        <h2> Are you sure u want to delete "{{product.name}}" ?</h2>
+        <form method="post">
+            {%csrf_token%}
+            <button type="submit" class="btn btn-danger"> YES  </button>
+            <a href="{% url 'Products:product' product.id %}"> Cancel</a>
+        </form>
+
+    </div>
+{% endblock %}

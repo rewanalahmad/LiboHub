@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load django_bootstrap5 %}
+{% block content %}
+    <div class="container mt-4">
+        {%if results%}
+            {%for r in results%}
+                <h5>{{r.name}}</h5>
+            {%endfor%}
+            {%else%}
+            <p> no books found in "{{query}}"</p>
+        {%endif%}
+    </div>
+{% endblock %}
