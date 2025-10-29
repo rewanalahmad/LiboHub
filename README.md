@@ -6,4 +6,3 @@ This project is a full-fledged eCommerce website built using Django,a high-level
 ## Table of contents
 - [Features](#features)
 - [Screenshots](#screenshots)
-- [License](#license)
