@@ -60,7 +60,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'LIBOHUB.urls'
+ROOT_URLCONF = 'localcart.urls'
 
 TEMPLATES = [
     {
@@ -79,7 +79,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'LIBOHUB.wsgi.application'
+WSGI_APPLICATION = 'localcart.wsgi.application'
 
 
 # Database
