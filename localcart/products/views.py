@@ -39,7 +39,7 @@ def add_category_forms(request):
         form = CategoryForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('Products:index')  # or 'Products:home' if you want to show products
+            return redirect('Products:add_category')  # or 'Products:home' if you want to show products
     else:
         form = CategoryForm()
     
@@ -52,7 +52,7 @@ def add_product_forms(request):
         form = ProductForm(request.POST or None)
         if form.is_valid():
             form.save()
-            return redirect("Products:index")
+            return redirect("Products:add_product")
         
     else:
         form=ProductForm()
