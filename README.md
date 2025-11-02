@@ -8,7 +8,6 @@ It allows users to browse books, mark favorites, and leave feedback — while ad
 ## Table of contents
 - [Features](#features)
 - [Teach Stack](#teach-stack)
-- [Screenshots](#screenshots)
 - [Setup](#setup)
 - [Screenshots](#screenshots)
 - [Demo](#demo)
@@ -43,9 +42,12 @@ Clone this repository and follow these steps to run the project locally:
  - python manage.py migrate
 
  # Create superuser  (for admin panel access)
- - python managepy createsuperuser
+ - python manage.py createsuperuser
 
  # Run the development server
 - python manage.py runserver
 - Now visit http://127.0.0.1:8000/ in your browser, access the admin panel
  http://127.0.0.1:8000/admin  
+
+# Demo
+- [LIBOHUB website](https://rewanalahmad.pythonanywhere.com/homepage/)
