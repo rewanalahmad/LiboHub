@@ -1,8 +1,51 @@
 # Django E_commerce Website
 
-This project is a full-fledged eCommerce website built using Django,a high-level Python web framework.It includes essential features such as 
+This project is a **full-featured eCommerce web aplication** built with **Django**,
+a high-level Python web framework.It provides essential online shoping featueres, including product browsing,cart management, checkout, and user authentication.
+
 
 
 ## Table of contents
 - [Features](#features)
+- [Teach Stack](#teach-stack)
 - [Screenshots](#screenshots)
+- [Setup](#setup)
+- [Screenshots](#screenshots)
+- [Demo](#demo)
+- [What's Coming next](#whats-coming-next)
+- [License](#license)
+
+## Features
+- Register, log in, and manage your account.  
+- **CRUD** Add, edit, and delete books via user-friendly forms.  
+- Add or remove books from your favorites list.  
+- Add and delete **feedback** for books.  
+- Explore all available books easily.  
+
+
+## Teach Stack
+- **Backend:** Django, python
+- **Frontend:** HTML, CSS, Bootstrap
+- **Database:** SQLite 
+- **Deployment:** PythonAnywhere
+
+## Setup
+Clone this repository and follow these steps to run the project locally:
+'''bash
+# Clone this repository
+git clone https://github.com/<your-username>/<your-repo-name>.git
+cd <your-repo-name>
+ # Install dependencies
+ pip install -r requirements.txt
+
+ # Apply migrations
+ python manage.py makemigrations
+ python manage.py migrate
+
+ # Create superuser  (for admin panel access)
+ python managepy createsuperuser
+
+ # Run the development server
+ python manage.py runserver
+Now visit http://127.0.0.1:8000/ in your browser, access the admin panel
+ http://127.0.0.1:8000/admin  
