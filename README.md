@@ -1,7 +1,7 @@
 # Django E_commerce Website
 
-This project is a **full-featured eCommerce web aplication** built with **Django**,
-a high-level Python web framework.It provides essential online shoping featueres, including product browsing,cart management, checkout, and user authentication.
+This project is a **Book Store web application** built with **Django**, a powerful Python web framework.  
+It allows users to browse books, mark favorites, and leave feedback — while admins can easily add, edit, or delete books through simple forms.  
 
 
 
@@ -33,19 +33,19 @@ a high-level Python web framework.It provides essential online shoping featueres
 Clone this repository and follow these steps to run the project locally:
 '''bash
 # Clone this repository
-git clone https://github.com/<your-username>/<your-repo-name>.git
-cd <your-repo-name>
+- git clone **repository**
+
  # Install dependencies
- pip install -r requirements.txt
+ - pip install -r requirements.txt
 
  # Apply migrations
- python manage.py makemigrations
- python manage.py migrate
+ - python manage.py makemigrations
+ - python manage.py migrate
 
  # Create superuser  (for admin panel access)
- python managepy createsuperuser
+ - python managepy createsuperuser
 
  # Run the development server
- python manage.py runserver
-Now visit http://127.0.0.1:8000/ in your browser, access the admin panel
+- python manage.py runserver
+- Now visit http://127.0.0.1:8000/ in your browser, access the admin panel
  http://127.0.0.1:8000/admin  
