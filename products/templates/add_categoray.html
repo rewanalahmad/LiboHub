@@ -1,14 +1,13 @@
 {% extends "base.html" %}
 {% load django_bootstrap5 %}
+
 {% block content %}
-    <h3> Add Categoray </h3>
-    <div>
-        <form method="post">
-            {%csrf_token%}
-            {{form.as_p}}
-            <button type="submit"> save categoray </button>
-        </form>
+  <h3>Add Category</h3>
+  <form method="post">
+      {% csrf_token %}
+      {% bootstrap_form form %}
 
-    </div>
-
+      <button type="submit" class="btn btn-primary mt-2">Submit</button>
+  </form>
 {% endblock %}
+

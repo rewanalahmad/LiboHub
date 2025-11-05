@@ -3,39 +3,47 @@
   <h1>Books{% if category %} in {{ category|title }}{% endif %}</h1>
 
   {% if products %}
-    <div class="products-list">
-      {% for product in products %}
-        <div class="card" style="width: 16rem; margin-bottom: 15px;">
+  <div class="card-container">
+    {% for product in products %}
+    <div class="card">
+
+      <div class="tilt">
+        <div class="img">
           {% if product.imag %}
-            <img src="{{ product.imag.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 300px; object-fit: cover;">
+            <img src="{{ product.imag.url }}" alt="{{ product.name }}" style="height: 300px; object-fit: cover;">
           {% else %}
-            <img src="https://via.placeholder.com/200x200" class="card-img-top" alt="No Image">
+            <img src="https://via.placeholder.com/200x200" alt="No Image">
           {% endif %}
-
-          <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">{{ product.description }}</p>
-            <p><strong>Category:</strong> {{ product.categoray.name }}</p>
-            <p><strong>Price:</strong> ${{ product.price }}</p>
-
-            <form action="{% url 'Products:toggle_favorite' product.id %}" method="post" style="display:inline;">
-              {% csrf_token %}
-              {% if product in user.favorit_book.all %}
-                <button type="submit" class="btn btn-warning">Remove from Favorite</button>
-              {% else %}
-                <button type="submit" class="btn btn-primary">Add to Favorite</button>
-              {% endif %}
-            </form>
-
-            <a href="{% url 'Products:edit' product.id %}" class="btn btn-secondary">Edit</a>
-            <a href="{% url 'Products:delete' product.id %}" class="btn btn-danger">Delete</a>
-            <a href="{% url 'Products:comment_on_product' product.id %}" class="btn btn-secondary"> comments</a>
-          </div>
         </div>
-      {% endfor %}
-    </div>
-  {% else %}
-    <p>No Books found.</p>
-  {% endif %}
+      </div>
 
+      <div class="info">
+        <h2 class="title">{{ product.name }}</h2>
+        <p class="desc">{{ product.description }}</p>
+        <p class="price">price: {{product.price}}$</p>
+        <p class="stock">in stock: {{product.stock}}</p>
+
+        <div class="bottom">
+          <form action="{% url 'Products:toggle_favorite' product.id %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            {% if product in user.favorite_book.all %}
+              <button type="submit" class="btn btn-warning">Remove from Favorite</button>
+            {% else %}
+              <button type="submit" class="btn btn-primary">Add to Favorite</button>
+            {% endif %}
+          </form>
+        </div>
+
+        <div class="bottom">
+          <a href="{% url 'Products:edit' product.id %}" class="btn btn-secondary">Edit</a>
+          <a href="{% url 'Products:delete' product.id %}" class="btn btn-danger">Delete</a>
+          <a href="{% url 'Products:comment_on_product' product.id %}" class="btn btn-info">Comments</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+    <p>No books found.</p>
+  {% endif %}
 {% endblock %}

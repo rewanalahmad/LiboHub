@@ -7,11 +7,13 @@
     {% load static%}
     {% bootstrap_css%}
     {% bootstrap_javascript%}
+    
+    <link rel="stylesheet" href="/media/css/base.css">
     <link href="{% static 'your-path-to-fontawesome/css/fontawesome.css' %}" rel="stylesheet">
     <link href="{% static 'your-path-to-fontawesome/css/brands.css' %}" rel="stylesheet">
 
 </head>
-<body>
+<body >
     <div class="container">
         {% if user.is_authenticated %}
             <li class="nav-text me-2 d-flex align-item-center">
@@ -38,30 +40,30 @@
     </div>
     
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">LIBOHUB</a>
+  <div class="container-fluid" style="background-color: rgb(198, 111, 82);">
+    <a class="navbar-brand"  href="#">LIBOHUB</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{%url 'home:homepage'%}">Home</a>
+          <a class="nav-link active" aria-current="page" style="background-color: rgb(199, 74, 74);" href="{%url 'home:homepage'%}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'accounts:register'%}"> Register </a>
+          <a class="nav-link" style="background-color: rgb(199, 74, 74);" href="{% url 'accounts:register'%}"> Register </a>
+        </li>
+        <li class="nav-item"   >
+          <a class="nav-link" style="background-color: rgb(199, 74, 74);" href="{% url 'home:about_us'%}" > About Us </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'home:about_us'%}"> About Us </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href=""> Contect Us </a>
+          <a class="nav-link" style="background-color:rgb(199, 74, 74) ;" href="" > Contect Us </a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: rgb(199, 74, 74);">
             ADD
           </a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" >
             <li><a class="dropdown-item" href="{% url 'Products:add_category'%}">Add Categoray</a></li>
             <li><a class="dropdown-item" href="{% url 'Products:add_product'%}">Add Products</a></li>
             <li><a class="dropdown-item" href="{%url 'Products:add_feedback'%}">Add Feedbck</a> </li>
@@ -73,7 +75,7 @@
       </ul>
       <form class="d-flex" role="search" action="{% url 'Products:search' %}" method="get">
         {{ search_form.query }}
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-outline-success"  style="color: rgb(1, 1, 1); background-color: rgb(199, 74, 74);" type="submit">Search</button>
       </form>
 
     </div>
