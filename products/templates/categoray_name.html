@@ -38,6 +38,8 @@
           <a href="{% url 'Products:edit' product.id %}" class="btn btn-secondary">Edit</a>
           <a href="{% url 'Products:delete' product.id %}" class="btn btn-danger">Delete</a>
           <a href="{% url 'Products:comment_on_product' product.id %}" class="btn btn-info">Comments</a>
+          <a href="{%url 'Products:add_feedback'%}" class="btn btn-secondary">Add Feedbck</a>
+
         </div>
       </div>
     </div>
