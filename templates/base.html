@@ -10,6 +10,7 @@
     
     <link rel="stylesheet" href="/media/css/base.css">
     <link rel="stylesheet" href="/media/css/card.css">
+    <link rel="stylesheet" href="/media/css/contuctus.css">
     <link href="{% static 'your-path-to-fontawesome/css/fontawesome.css' %}" rel="stylesheet">
     <link href="{% static 'your-path-to-fontawesome/css/brands.css' %}" rel="stylesheet">
 
@@ -61,7 +62,7 @@
           <a class="nav-link" href="{%url 'Products:favorite_book'%}">My Books</a> 
         </li>        
         <li class="nav-item">
-          <a class="nav-link"  href="" > Contect Us </a>
+          <a class="nav-link"  href="{% url 'home:contactus'%}" > Contect Us </a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" >

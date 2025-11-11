@@ -3,7 +3,7 @@
 
 @layer demo {
 	.carousel {
-		--items: 5;
+		--items: 6;
 		--carousel-duration: 40s;
 		@media (width > 600px) {
 			--carousel-duration: 30s;

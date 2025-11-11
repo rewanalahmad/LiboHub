@@ -51,3 +51,10 @@ Clone this repository and follow these steps to run the project locally:
 
 # Demo
 - [LIBOHUB website](https://rewanalahmad.pythonanywhere.com/homepage/)
+
+## License
+- This project is licensed under the terms of the **MIT License**.  
+    You are free to use, copy, modify, and distribute it, as long as you include this license notice in your project.
+
+    Additionally, this project integrates the [django-content-licenses](https://source.codetrax.org/hgroot/django-content-licenses) app, 
+    which is licensed under the **Apache License 2.0**.
