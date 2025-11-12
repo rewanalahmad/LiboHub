@@ -31,20 +31,20 @@ It allows users to browse books, mark favorites, and leave feedback — while ad
 ## Setup
 Clone this repository and follow these steps to run the project locally:
 '''bash
-- Clone this repository
+- Clone this repository:
   git clone **repository**
 
-- Install dependencies
+- Install dependencies:
    pip install -r requirements.txt
 
-- Apply migrations
+- Apply migrations:
    python manage.py makemigrations
    python manage.py migrate
-   
-- Create superuser  (for admin panel access)
+
+- Create superuser : (for admin panel access)
   python manage.py createsuperuser
 
-- Run the development server
+- Run the development server:
   python manage.py runserver
   Now visit http://127.0.0.1:8000/ in your browser, access the admin panel
   http://127.0.0.1:8000/admin  
