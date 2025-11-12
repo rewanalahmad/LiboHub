@@ -31,23 +31,23 @@ It allows users to browse books, mark favorites, and leave feedback — while ad
 ## Setup
 Clone this repository and follow these steps to run the project locally:
 '''bash
-# Clone this repository
-- git clone **repository**
+- Clone this repository
+  git clone **repository**
 
- # Install dependencies
- - pip install -r requirements.txt
+- Install dependencies
+   pip install -r requirements.txt
 
- # Apply migrations
- - python manage.py makemigrations
- - python manage.py migrate
+- Apply migrations
+   python manage.py makemigrations
+   python manage.py migrate
+   
+- Create superuser  (for admin panel access)
+  python manage.py createsuperuser
 
- # Create superuser  (for admin panel access)
- - python manage.py createsuperuser
-
- # Run the development server
-- python manage.py runserver
-- Now visit http://127.0.0.1:8000/ in your browser, access the admin panel
- http://127.0.0.1:8000/admin  
+- Run the development server
+  python manage.py runserver
+  Now visit http://127.0.0.1:8000/ in your browser, access the admin panel
+  http://127.0.0.1:8000/admin  
 
 # Demo
 - [LIBOHUB website](https://rewanalahmad.pythonanywhere.com/homepage/)
