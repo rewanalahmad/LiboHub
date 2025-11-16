@@ -20,6 +20,7 @@ urlpatterns=[
     path("romanc_books/<str:categoray_name>",views.categoray_view,name='categoray_name'),
     path("delete/<int:id>",views.delete_product,name='delete'),
     path("edit/<int:id>",views.edit_product,name='edit'),
+    #api related
     path('api/',include(router.urls)),
 
 ]
