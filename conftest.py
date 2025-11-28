@@ -1,42 +1,47 @@
 import pytest
 from django.contrib.auth.models import User
+from pytest_factoryboy import register
+from tests.factorys import UserFactoray, ProductFactoray, CategorayFactoray
+from django.test import LiveServerTestCase
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+
+register(UserFactoray)
+register(ProductFactoray)
+register(CategorayFactoray)
+
+
 
 @pytest.fixture()
-def user_1(db):
-    user=User.objects.create_user('test-user')
-    print('create_user')
+def user_1(db,user_factoray):
+    user=user_factoray.create()
     return user
 
-@pytest.fixture
-def new_user_factory():
-    def create_app_user(
-            username:str,
-            password:str=None,
-            first_name:str = "firstname",
-            last_name:str = 'lastname',
-            email:str = 'test@test.com',
-            is_staff:str = False,
-            is_superuser:str = False,
-            is_active:str = True,
-    ):
-        user=User.objects.create_user(
-            username=username,
-            password=password,
-            first_name=first_name,
-            last_name=last_name,
-            email=email,
-            is_staff=is_staff,
-            is_superuser=is_superuser,
-            is_active=is_active,
-        )
-        return user
-    return create_app_user
 
-@pytest.fixture
-def new_user1(db,new_user_factory):
-    return new_user_factory('test_user', 'password', 'rewan')
+@pytest.fixture(scope='class')
+def Chrome_driver_init(request):
+    options=webdriver.ChromeOptions()
+    #add custom option
+    options.add_argument('--headless')
+    options.add_argument('--disable-infobars')
+    options.add_argument('--start-maximized')
+    chrome_driver=webdriver.Chrome(options=options,service=Service(ChromeDriverManager().install()))
+    request.cls.driver=chrome_driver
+    yield
+    chrome_driver.close()
 
-@pytest.fixture
-def new_user2(db, new_user_factory):
-    return new_user_factory('test_user','password','rewan',is_staff='True')
 
+@pytest.fixture(params=['chrome','firefox'],scope='class')
+def driver_init(request):
+    if request.param== 'chrome':
+        options=webdriver.ChromeOptions()
+        options.add_argument('--headless')
+        web_driver=webdriver.Chrome(service=Service(ChromeDriverManager().install()),options=options)
+    if request.param=='firefox':
+        options=webdriver.FirefoxOptions()
+        options.add_argument('--headless')
+        web_driver=webdriver.Firefox(options=options)
+    request.cls.driver=web_driver
+    yield
+    web_driver.close()
