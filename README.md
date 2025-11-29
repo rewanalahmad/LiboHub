@@ -12,6 +12,7 @@ It allows users to browse books, mark favorites, and leave feedback — while ad
 - [Screenshots](#screenshots)
 - [Demo](#demo)
 - [What's Coming next](#whats-coming-next)
+- [Testing](#tetsing)
 - [License](#license)
 
 ## Features
@@ -27,6 +28,7 @@ It allows users to browse books, mark favorites, and leave feedback — while ad
 - **Frontend:** HTML, CSS, Bootstrap
 - **Database:** SQLite 
 - **Deployment:** PythonAnywhere
+- **Testing:** Pytest, Selenium
 
 ## Setup
 Clone this repository and follow these steps to run the project locally:
@@ -51,6 +53,17 @@ Clone this repository and follow these steps to run the project locally:
 
 # Demo
 - [LIBOHUB website](https://rewanalahmad.pythonanywhere.com/homepage/)
+
+# What's Coming Next
+- Improved search and filter functionality for books.
+- User profile enhancements.
+- Integration with payment gateways for online purchases.
+- Responsive design improvements for mobile users.
+
+# Testing
+- This project includes automated tests using Pytest and Selenium to ensure the       website functions correctly:
+- Pytest: For backend unit tests.
+- Selenium: For end-to-end browser tests and UI interactions.
 
 ## License
 - This project is licensed under the terms of the **MIT License**.  

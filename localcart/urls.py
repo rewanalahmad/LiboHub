@@ -18,12 +18,30 @@ from django.contrib import admin
 from django.urls import path,include
 from django.conf.urls.static import static
 from django.conf import settings
+from rest_framework import routers, serializers, viewsets
+from django.contrib.auth.models import User
 
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model=User
+        fields=['url','username','email','is_staff']
+
+# ViewSets define the view behavior.
+class userViewset(viewsets.ModelViewSet):
+    queryset=User.objects.all()
+    serializer_class=UserSerializer
+
+router=routers.DefaultRouter()
+router.register(r'users',userViewset)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('orders/',include('orders.urls')),
     path('product/',include('products.urls')),
     path('accounts/',include('accounts.urls')),
     path('homepage/',include('home.urls')),
-    path('',include('home.urls'))
+    path('', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
