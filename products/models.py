@@ -1,7 +1,14 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
+from pygments.styles import get_all_styles
+from pygments.lexers import get_lexer_by_name,get_all_lexers
+from pygments.formatters.html import HtmlFormatter
+from pygments import highlight
 
+style_choices=sorted([(item, item)for item in get_all_styles()])
+lexer= [item for item in get_all_lexers() if item[1]]
+language = sorted([(item[1][0], item[0]) for item in lexer])
 
 class Category(models.Model):
     name = models.CharField(max_length=150, default="product_name")
@@ -40,7 +47,10 @@ class Product(models.Model):
     imag = models.ImageField(upload_to='products/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now=True)
     favorited_by=models.ManyToManyField(User,related_name='favorit_book',blank=True)
-    
+    style = models.CharField(choices=style_choices, default="friendly", max_length=100)
+    owner = models.ForeignKey(
+    "auth.User", related_name="snippets", on_delete=models.CASCADE,null=True)
+    highlighted = models.TextField(null=True)
 
     def get_absolute_url(self):
         return reverse('Products:comment_on_product', kwargs={'id': self.id})
@@ -49,6 +59,7 @@ class Product(models.Model):
         return self.name
     def price_with_dollar(self):
         return self.price+'$'
+    
 
 class FeedBack(models.Model):
     name=models.CharField(max_length=50)

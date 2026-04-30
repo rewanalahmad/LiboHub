@@ -15,6 +15,7 @@ class productdetails(DetailView):
     context_object_name='product'
 
 def index(request):
+    
     template=loader.get_template('homepage.html')
     product=Product.objects.all()
     categoray=Category.objects.all()

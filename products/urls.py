@@ -1,9 +1,14 @@
 from django.urls import path,include
 from products import views
 from rest_framework.routers import DefaultRouter
+from rest_framework.urlpatterns import format_suffix_patterns
+
+
 app_name='Products'
 router=DefaultRouter() # automatically generates URL patterns
 router.register(r'product',views.productViewSet,basename='product')
+
+
 urlpatterns=[
     #categoray related
     path('add_categoray/',views.add_category_forms,name="add_category"),
