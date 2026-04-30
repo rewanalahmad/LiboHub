@@ -9,7 +9,17 @@ from django.shortcuts import redirect,render,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages,sessions
 from rest_framework import viewsets
-from .serialzers import ProductSerialzers
+from .serialzers import ProductSerialzers,UserSerialzers
+from rest_framework import status
+from rest_framework.response import Response
+from django.contrib.auth.models import User
+from rest_framework import permissions
+from .permissions import IsOwnerOrReadonly
+from rest_framework.decorators import api_view
+from rest_framework.reverse import reverse
+from rest_framework import renderers
+from rest_framework import generics
+
 
 @login_required()
 def add_product(request,categoray_id=None):
@@ -234,10 +244,16 @@ def edit_product(request, id):
 
 
 class productViewSet(viewsets.ModelViewSet):
+
     queryset=Product.objects.all() # wich object should be manage.
     serializer_class=ProductSerialzers # wich serialzer should convert to json.
-
+    #permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadonly]
+'''
     def perform_create(self, serializer):
         """ this is part form ModelViewSet"""
         serializer.save(user=self.request.user)        
-        
+        serializer.save(owner=self.request.user) #now will be passed an additional 'owner' field
+'''
+
+
+

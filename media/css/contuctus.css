@@ -24,7 +24,7 @@ body, button, input {
 
 .screen {
   position: relative;
-  background:#b9134f;
+  background:#e35f1d;
   border-radius: 15px;
 }
 
@@ -84,7 +84,7 @@ body, button, input {
   height: 3px;
   margin-left: 2px;
   border-radius: 8px;
-  background: #999;
+  background: #b63e3e;
 }
 
 .screen-body {
