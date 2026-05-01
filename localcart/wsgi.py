@@ -11,8 +11,8 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'loclcart.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'localcart.settings')
 
 application = get_wsgi_application()
 
-app= application  #connect to our virtual app
+app= application  #connect to our virtual app #the app in vercel.app
