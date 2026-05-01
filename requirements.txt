@@ -8,7 +8,6 @@ charset-normalizer==3.4.4
 colorama==0.4.6
 Django==5.2.7
 django-bootstrap5==25.2
-django-content-licenses==0.2.3
 django-filter==25.2
 djangorestframework==3.16.1
 docutils==0.21.2
